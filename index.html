@@ -1,9 +1,10 @@
 <html>
 <head>
+  <title>AngularJS Best Practices</title>
+  <meta charset="utf-8">
   <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
   <link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
   <link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
-">
 </head>
 <body>
   <div class="reveal">
@@ -15,6 +16,7 @@
         <ul>
           <li>Code</li>
           <li class="fragment">Performance</li>
+          <li class="fragment">Process</li>
           <li class="fragment">Future</li>
         </ul>
       </section>
@@ -24,7 +26,7 @@
       </section>
 
       <section>
-        <h3>Bindable members up top</h3>
+        <h3><a href="https://github.com/johnpapa/angular-styleguide/tree/master/a1#style-y033">Bindable members up top</a></h3>
 
         <pre><code data-trim>
           function SessionsController() {
@@ -48,7 +50,88 @@
       </section>
 
       <section>
+        <h3>Where to put logic?</h3>
+        <p>
+          :( Controller
+          <br>
+          :) Service
+        </p>
+        <ul>
+          <li>Reusable</li>
+          <li>Easier to test</li>
+          <li>Keeps controllers and thus components simpler</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Promises (1)</h3>
+        <p>
+          Catch them all
+        </p>
+        <pre><code data-trim>
+          $http.get('/api/customer/' + id)
+  .then(getCustomerComplete)
+  .catch(getCustomerFailed)
+        </code></pre>
+      </section>
+
+      <section>
+        <h3>Promises (2)</h3>
+        <p>
+          Catch them all
+        </p>
+        <pre><code data-trim>
+          $http.get('/api/customer/' + id)
+  .then(getCustomerComplete)
+  .catch(getCustomerFailed)
+        </code></pre>
+      </section>
+
+      <section>
+        <h3>But what if I just need some simple JavaScript thingy?</h3>
+        <ul>
+          <li><code>document</code> ➫ <code>$document</code></li>
+          <li><code>window</code> ➫ <code>$window</code></li>
+          <li><code>setTimeout</code> ➫ <code>$timeout</code></li>
+          <li><code>setInterval</code> ➫ <code>$interval</code></li>
+          <li><code>$('.foo')</code> ➫ <code>angular.element('.foo')</code></li>
+        </ul>
+      </section>
+
+      <section>
         <h2>Performance</h2>
+      </section>
+
+      <section>
+        <h2>Process</h2>
+      </section>
+
+      <section>
+        <h3>Before starting</h3>
+        <ul>
+          <li>
+            Ensure tests are all green<br>
+            <code>$> grunt test</code>
+          </li>
+          <li></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>While working</h3>
+        <ul>
+          <li>Regularly rebase on/merge with develop</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Before pushing</h3>
+        <ul>
+          <li>
+            Run eslint and test suite:<br>
+            <code>$> grunt test</code>
+          </li>
+        </ul>
       </section>
 
       <section>
@@ -60,7 +143,7 @@
       </section>
     </div>
   </div>
-  <script src=node_modules/headjs/dist/1.0.0/head.js></script>
+  <script src="node_modules/headjs/dist/1.0.0/head.js"></script>
   <script src="node_modules/reveal.js/js/reveal.js"></script>
   <script>
   Reveal.initialize({
@@ -69,7 +152,6 @@
       src: 'node_modules/reveal.js/plugin/highlight/highlight.js',
       async: true,
       callback: function() {
-        console.log('loaded');
         hljs.initHighlightingOnLoad();
       }
     }]
