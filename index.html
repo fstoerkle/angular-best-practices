@@ -1,0 +1,79 @@
+<html>
+<head>
+  <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css">
+  <link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>AngularJS<br>Best Practices</h1>
+      </section>
+      <section>
+        <ul>
+          <li>Code</li>
+          <li class="fragment">Performance</li>
+          <li class="fragment">Future</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Code</h2>
+      </section>
+
+      <section>
+        <h3>Bindable members up top</h3>
+
+        <pre><code data-trim>
+          function SessionsController() {
+    var vm = this;
+
+    vm.search = search;
+    vm.sessions = [];
+    vm.title = 'Sessions';
+
+    init();
+
+    function init() {
+      /*  */
+    }
+
+    function search() {
+      /* */
+    }
+}
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>Performance</h2>
+      </section>
+
+      <section>
+        <h2>Future</h2>
+      </section>
+
+      <section>
+        <h2>The end.</h2>
+      </section>
+    </div>
+  </div>
+  <script src=node_modules/headjs/dist/1.0.0/head.js></script>
+  <script src="node_modules/reveal.js/js/reveal.js"></script>
+  <script>
+  Reveal.initialize({
+    history: true,
+    dependencies: [ {
+      src: 'node_modules/reveal.js/plugin/highlight/highlight.js',
+      async: true,
+      callback: function() {
+        console.log('loaded');
+        hljs.initHighlightingOnLoad();
+      }
+    }]
+  });
+  </script>
+</body>
+</html>
